@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch Login",
+            "request": "launch",
+            "mainClass": "Login",
+            "projectName": "first.java.swing.test_93b85d7f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "first.java.swing.test_93b85d7f"
+        },
+        {
             "name": "Java",
             "type": "java",
             "request": "launch",

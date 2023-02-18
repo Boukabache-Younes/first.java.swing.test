@@ -1,13 +1,10 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Main {
+public class Home {
 
-    public Main(){
+    public Home(){
         Frame frame = new Frame("GG");
-
-        //JFrame login = new JFrame();
-        //login.add(login, new Login());
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout(0, 0));
@@ -17,10 +14,9 @@ public class Main {
         panel.add(new SideBar(), BorderLayout.WEST);
 
         frame.setContentPane(panel);
+        //frame.setResizable(false);
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Main();
-    }
+    
 }

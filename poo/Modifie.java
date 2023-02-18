@@ -187,9 +187,6 @@ public class Modifie extends JFrame implements ActionListener {
                     desca.setText(s[4]);
                     desca.setEditable(true);
 
-
-
-                    
                 }
                 if (e.getSource() == mod) {
                     if (isNotNum(prixf.getText()) || isNotNum(quanf.getText())) {
