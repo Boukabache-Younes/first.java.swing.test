@@ -87,6 +87,42 @@ public class DBcon {
         }
     }
 
+    public void rechrchercat(JTable tab, String x) {
+
+    String column[] = { "Code", "Nom", "Prix", "Quantite", "description", "categorie" };
+        DefaultTableModel model = new DefaultTableModel(null, column);
+        try {
+            ResultSet resultat = stmt.executeQuery("SELECT * FROM products where categorie = '" + x + "';");
+            if (resultat.next()) {
+
+                String c = resultat.getString("code");
+                String n = resultat.getString("nom");
+                String p = resultat.getString("prix");
+                String q = resultat.getString("quantite");
+                String d = resultat.getString("description");
+                String ct = resultat.getString("categorie");
+
+                String[] o = { c, n, p, q, d, ct };
+                ResultSetMetaData metaData = resultat.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                for (int i = 1; i <= columnCount; i++) {
+                model.addColumn(metaData.getColumnName(i));
+}
+                while (resultat.next()) {
+                    Object[] rowData = new Object[columnCount];
+                    for (int i = 1; i <= columnCount; i++) {
+                        rowData[i-1] = resultat.getObject(i);
+                    }
+                    model.addRow(rowData);
+                }
+               // model.addRow(o);
+            }
+            tab.setModel(model);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
     public String[] getRow(String code) {
         String[] s = { "", "", "", "", "", "" };
         try {

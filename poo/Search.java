@@ -46,14 +46,15 @@ public class Search extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn) {            
             if (sb.getText().isBlank()) {
-                // JOptionPane.showMessageDialog(null, "Please fill search field");
                 new DBcon().afficher(TableScroll.tab);
             } else {
                 if (new DBcon().codeExist(sb.getText())) {
                     new DBcon().rechrcher(TableScroll.tab, sb.getText());
                 } else {
-                    // JOptionPane.showMessageDialog(null, "med n'exist pas");
                     new DBcon().afficher(TableScroll.tab);
+                }
+                if (new DBcon().codeExist(sb.getText())) {
+                    new DBcon().rechrchercat(TableScroll.tab, sb.getText());
                 }
             }
         }
