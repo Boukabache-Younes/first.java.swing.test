@@ -1,8 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
-public class Home {
-
+public class Home  implements ActionListener {
+        static Frame frame;
     public Home(){
         Frame frame = new Frame("GG");
 
@@ -17,6 +18,13 @@ public class Home {
         //frame.setResizable(false);
         frame.setVisible(true);
     }
+    @Override
+    public static void actionPerformed (ActionEvent e){
+        if(e.getSource()==Menu.logout){
+            frame.dispose();
+            new Login();
 
+        }
+    }
     
 }
