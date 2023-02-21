@@ -81,14 +81,14 @@ public class Login extends JFrame implements ActionListener{
     @Override
     public void actionPerformed (ActionEvent e){
         if (e.getSource()==connect) {
-            //if(passworField.getText().equals("admin") && temail.getText().equals("admin")){
+        if(passworField.getText().equals("admin") && temail.getText().equals("admin")){
                 dispose();
                 new Home();
-            //}
-            //else{
-                    //JOptionPane.showMessageDialog(null, "Invalid username or password. Please try again.");  
+            }
+            else{
+                    JOptionPane.showMessageDialog(null, "Invalid username or password. Please try again.");  
                 }
-        //};
+        };
                    
     }
     public static void main(String[] args) {
