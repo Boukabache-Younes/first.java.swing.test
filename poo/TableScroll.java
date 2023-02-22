@@ -43,7 +43,7 @@ public class TableScroll extends JPanel {
                 tabl.setBackground(Styles.WHITE_COLOR);
                 tabl.setForeground(Styles.TEXT_COLOR);
                 tabl.setFont(Styles.LABLE_FONT);
-                tabl.setSelectionBackground(Styles.GRAY_COLOR);
+                // tabl.setSelectionBackground(Styles.GRAY_COLOR);
 
                 tabl.getTableHeader().setBackground(Styles.TEXT_COLOR);
                 tabl.getTableHeader().setForeground(Styles.WHITE_COLOR);

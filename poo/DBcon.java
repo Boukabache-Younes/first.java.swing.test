@@ -49,6 +49,15 @@ public class DBcon {
 
             }
             tab.setModel(model);
+            // tab.setSelectionBackground(Styles.WARNING_COLOR);
+            
+            for (int r = 0; r < tab.getRowCount(); r++) {
+                String s = (String) tab.getValueAt(r, 3);
+                if (Integer.parseInt(s) < 5) {
+                    tab.
+                }
+            }
+
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -89,11 +98,11 @@ public class DBcon {
 
     public void rechrchercat(JTable tab, String x) {
 
-    String column[] = { "Code", "Nom", "Prix", "Quantite", "description", "categorie" };
+        String column[] = { "Code", "Nom", "Prix", "Quantite", "description", "categorie" };
         DefaultTableModel model = new DefaultTableModel(null, column);
         try {
             ResultSet resultat = stmt.executeQuery("SELECT * FROM products where categorie = '" + x + "';");
-            if (resultat.next()) {
+            while (resultat.next()) {
 
                 String c = resultat.getString("code");
                 String n = resultat.getString("nom");
@@ -101,25 +110,15 @@ public class DBcon {
                 String q = resultat.getString("quantite");
                 String d = resultat.getString("description");
                 String ct = resultat.getString("categorie");
+                // System.out.println("hjl");
 
                 String[] o = { c, n, p, q, d, ct };
-                ResultSetMetaData metaData = resultat.getMetaData();
-                int columnCount = metaData.getColumnCount();
-                for (int i = 1; i <= columnCount; i++) {
-                model.addColumn(metaData.getColumnName(i));
-}
-                while (resultat.next()) {
-                    Object[] rowData = new Object[columnCount];
-                    for (int i = 1; i <= columnCount; i++) {
-                        rowData[i-1] = resultat.getObject(i);
-                    }
-                    model.addRow(rowData);
-                }
-               // model.addRow(o);
+
+                model.addRow(o);
             }
             tab.setModel(model);
         } catch (Exception e) {
-            // TODO: handle exception
+
         }
     }
 
@@ -157,7 +156,8 @@ public class DBcon {
 
     public void ajouter(String code, int prix, String nom, int quantite, String categorie, String desc) {
         try {
-            stmt.executeUpdate("INSERT INTO products (code, nom, prix, quantite, description, categorie) VALUES ('" + code + "','" + nom
+            stmt.executeUpdate("INSERT INTO products (code, nom, prix, quantite, description, categorie) VALUES ('"
+                    + code + "','" + nom
                     + "','" + prix + "','" + quantite + "','" + desc + "','" + categorie + "');");
             JOptionPane.showMessageDialog(null, "products Added Succesfuly");
         } catch (SQLException e) {
@@ -169,13 +169,24 @@ public class DBcon {
 
     public void alter(String code, int prix, String nom, int quantite, String categorie, String desc) {
         try {
-            stmt.executeUpdate("UPDATE products SET prix = '" + prix + "', nom = '" + nom + "', categorie = '" + categorie
-                    + "', quantite = '" + quantite + "', description = '" + desc +"' WHERE code = '" + code + "';");
+            stmt.executeUpdate("UPDATE products SET prix = '" + prix + "', nom = '" + nom + "', categorie = '"
+                    + categorie
+                    + "', quantite = '" + quantite + "', description = '" + desc + "' WHERE code = '" + code + "';");
             JOptionPane.showMessageDialog(null, "products updated Succesfuly");
+            if (quantite < 5) {
+                JOptionPane.showMessageDialog(null, "stock is going down");
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "products not  updated ");
 
         }
     }
+
+    /*
+     * public void notifications(String nom , int quantite){
+     * if(quantite<5){
+     * 
+     * }
+     */
 
 }

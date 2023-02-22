@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Home",
+            "request": "launch",
+            "mainClass": "Home",
+            "projectName": "first.java.swing.test_93b85d7f"
+        },
+        {
+            "type": "java",
             "name": "Launch Login",
             "request": "launch",
             "mainClass": "Login",

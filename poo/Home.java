@@ -1,11 +1,17 @@
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
-public class Home  implements ActionListener {
-        static Frame frame;
-    public Home(){
-        Frame frame = new Frame("GG");
+public class Home extends JFrame{
+    // static Frame frame;
+
+    public Home() {
+        // Frame frame = new Frame("GG");
+
+        setTitle("GG");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
+        setSize(1920, 1080);
+        setMinimumSize(new Dimension(1200, 960));
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout(0, 0));
@@ -14,17 +20,13 @@ public class Home  implements ActionListener {
 
         panel.add(new SideBar(), BorderLayout.WEST);
 
-        frame.setContentPane(panel);
-        //frame.setResizable(false);
-        frame.setVisible(true);
+        setContentPane(panel);
+        // frame.setResizable(false);
+        setVisible(true);
     }
-    @Override
-    public static void actionPerformed (ActionEvent e){
-        if(e.getSource()==Menu.logout){
-            frame.dispose();
-            new Login();
 
-        }
+    public static void main(String[] args) {
+        new Home();
     }
-    
+
 }

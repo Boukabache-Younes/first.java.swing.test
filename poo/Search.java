@@ -53,7 +53,7 @@ public class Search extends JPanel implements ActionListener {
                 } else {
                     new DBcon().afficher(TableScroll.tab);
                 }
-                if (new DBcon().codeExist(sb.getText())) {
+                if (sb.getText().equals("categ0")) {
                     new DBcon().rechrchercat(TableScroll.tab, sb.getText());
                 }
             }

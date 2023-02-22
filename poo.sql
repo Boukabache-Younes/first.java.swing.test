@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ihm`
+-- Database: `ammi bachir store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medicament`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `products` (

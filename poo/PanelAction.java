@@ -2,12 +2,12 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-
 public class PanelAction extends JPanel implements ActionListener {
 
     MyButton deleteBtn;
     MyButton editBtn;
     MyButton ajtbtn;
+    JComboBox<String> categ;
 
     public PanelAction() {
 
@@ -15,8 +15,7 @@ public class PanelAction extends JPanel implements ActionListener {
         ImageIcon garbage = new ImageIcon("garbage.png");
 
         setBackground(null);
-        setLayout(new GridLayout(1,1,24,24));
-        
+        setLayout(new GridLayout(1, 1, 24, 24));
 
         ajtbtn = new MyButton("Ajouter", 24, Styles.BLUE_COLOR, Styles.WHITE_COLOR);
         ajtbtn.addActionListener(this);
@@ -26,10 +25,14 @@ public class PanelAction extends JPanel implements ActionListener {
         ajtbtn.setHorizontalTextPosition(SwingConstants.LEFT);
         add(ajtbtn);
 
-        JPanel gap1 = new JPanel();
-        gap1.setPreferredSize(new Dimension(50, 0));
-        gap1.setBackground(Styles.BG_COLOR);
-        add(gap1);
+        categ = new JComboBox<String>();
+        categ.addItem("All");
+        categ.addItem("categ0");
+        categ.addItem("categ1");
+        categ.addItem("categ2");
+        categ.addItem("categ3");
+        categ.addActionListener(this);
+        add(categ);
 
         editBtn = new MyButton("Modifier", 24, Styles.GRAY_COLOR, Styles.TEXT_COLOR);
         editBtn.addActionListener(this);
@@ -42,23 +45,33 @@ public class PanelAction extends JPanel implements ActionListener {
         deleteBtn.setIcon(garbage);
         deleteBtn.setIconTextGap(8);
         deleteBtn.setHorizontalTextPosition(SwingConstants.LEFT);
-        
+
         add(deleteBtn);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == deleteBtn) {
-            System.out.println("del");
+
             new Supprime();
         }
         if (e.getSource() == editBtn) {
-            System.out.println("mod");
+
             new Modifie();
         }
         if (e.getSource() == ajtbtn) {
-            System.out.println("mod");
+
             new Ajouter();
+        }
+        if (e.getSource() == categ) {
+            categ = (JComboBox<String>) e.getSource();
+            String selectedValue = (String) categ.getSelectedItem();
+            // System.out.println("Selected item: " + selectedValue);
+            if(selectedValue.equals("All")){
+                new DBcon().afficher(TableScroll.tab);
+            }else{
+                new DBcon().rechrchercat(TableScroll.tab, selectedValue);
+            }
         }
     }
 }
