@@ -50,13 +50,6 @@ public class DBcon {
             }
             tab.setModel(model);
             // tab.setSelectionBackground(Styles.WARNING_COLOR);
-            
-            for (int r = 0; r < tab.getRowCount(); r++) {
-                String s = (String) tab.getValueAt(r, 3);
-                if (Integer.parseInt(s) < 5) {
-                    tab.
-                }
-            }
 
         } catch (Exception e) {
             // TODO: handle exception
