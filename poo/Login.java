@@ -19,7 +19,7 @@ public class Login extends JFrame implements ActionListener{
         pane.setLayout(null);
 
         JLabel emLabel = new JLabel();
-        emLabel.setText("Email :");
+        emLabel.setText("username :");
         emLabel.setBounds(100, 245, 200, 40);
         emLabel.setFont(mainFont);
         pane.add(emLabel);
